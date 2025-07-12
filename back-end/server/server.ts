@@ -1,58 +1,49 @@
-// server.ts
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import dotenv from 'dotenv';
-import addressRoutes from './addressRoutes';
-import cors from "cors";
-import brandRoutes from './smartPhoneBrandRoutes';
-import laptopbrandRoutes from "./LaptopBrandRoutes";
-import bookingRoutes from './bookingRoutes';
-import accessoriesRoutes from './accessoriesBrandRoutes';
-import televisionRoutes from './televisionBrandRoutes';
-import refrigeratorRoutes from './refrigeratorBrandRoutes';
+import { VercelRequest, VercelResponse } from '@vercel/node';
+
+import addressRoutes from '../server/addressRoutes';
+import brandRoutes from '../server/smartPhoneBrandRoutes';
+import laptopbrandRoutes from '../server/LaptopBrandRoutes';
+import bookingRoutes from '../server/bookingRoutes';
+import accessoriesRoutes from '../server/accessoriesBrandRoutes';
+import televisionRoutes from '../server/televisionBrandRoutes';
+import refrigeratorRoutes from '../server/refrigeratorBrandRoutes';
 
 dotenv.config();
 
 const app = express();
-app.use(express.json());
-// const app = express();
-
 app.use(cors());
-// app.use(express.json()); 
+app.use(express.json());
 
-// Ensure MONGO_URI is defined
-// const MONGO_URI = process.env.MONGO_URI;
-// const MONGO_URI = "mongodb+srv://ragunath0407:Ragunath@#123@cluster0.1l6vk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-// const MONGO_URI = "mongodb+srv://ragunath0407:Ragunath%40%23123@cluster0.1l6vk.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0";
-
-// const MONGO_URI = "mongodb+srv://ewaste341:Ragu0423@cluster0.hqzylxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-const MONGO_URI = "mongodb+srv://wasteclient:Bp2e7tHQhHn1cqnc@ewasteclient.1lmwnvl.mongodb.net/?retryWrites=true&w=majority&appName=Ewasteclient";
-
-
+const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
-  throw new Error("MONGO_URI is not defined in the environment variables.");
+  throw new Error('❌ MONGO_URI not defined in environment');
 }
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("MongoDB connection error:", err));
+let isConnected = false;
 
+if (!isConnected) {
+  mongoose.connect(MONGO_URI)
+    .then(() => {
+      console.log("✅ MongoDB connected");
+      isConnected = true;
+    })
+    .catch((err) => console.error("❌ MongoDB connection error:", err));
+}
+
+// Mount all routes
 app.use('/', addressRoutes);
 app.use('/', brandRoutes);
 app.use('/', laptopbrandRoutes);
 app.use('/', accessoriesRoutes);
 app.use('/', televisionRoutes);
-app.use('/', refrigeratorRoutes)
+app.use('/', refrigeratorRoutes);
 app.use('/', bookingRoutes);
 
-// const PORT = process.env.PORT || 5000;
-const PORT = process.env.PORT || 5001; 
-
-app.listen(5001, () => {
-  console.log("Server running on port 5001");
-});
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
+// Vercel serverless export
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  app(req as any, res as any);
+}
