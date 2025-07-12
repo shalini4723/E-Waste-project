@@ -25,7 +25,9 @@ app.use(cors());
 // const MONGO_URI = "mongodb+srv://ragunath0407:Ragunath@#123@cluster0.1l6vk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 // const MONGO_URI = "mongodb+srv://ragunath0407:Ragunath%40%23123@cluster0.1l6vk.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=Cluster0";
 
-const MONGO_URI = "mongodb+srv://ewaste341:Ragu0423@cluster0.hqzylxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// const MONGO_URI = "mongodb+srv://ewaste341:Ragu0423@cluster0.hqzylxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+const MONGO_URI = "mongodb+srv://wasteclient:Bp2e7tHQhHn1cqnc@ewasteclient.1lmwnvl.mongodb.net/?retryWrites=true&w=majority&appName=Ewasteclient";
 
 
 if (!MONGO_URI) {
