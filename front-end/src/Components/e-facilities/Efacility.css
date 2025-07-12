@@ -1,0 +1,202 @@
+.containers{
+    margin: 25px;
+    margin-top: 60px;
+  }
+  #map {
+    height: 650px;
+    width: 75%;
+}
+.flex.space-x-2{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 5px;
+    margin-top: 10px;
+}
+.Address-h2{
+    /* margin-left: 15px; */
+    color: white;
+}
+
+/* .address-container{
+    background-image: url("../../Assets/About.jpg");
+    width: 23%;
+    border-radius: 5px;
+} */
+
+
+.address-container {
+  max-height: 650px; 
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-image: url("../../Assets/About.jpg");
+  width: 23%;
+  border-radius: 5px;
+}
+
+/* Optional: Customize scrollbar appearance */
+.address-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.address-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.address-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.details-Address{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* font-family: 'DM sans'; */
+}
+.Address-List{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* .btn-md.btn-primary{
+    margin-right: 15px;
+} */
+
+
+/* Container for the form */
+.address-form-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: auto;
+  }
+  
+  /* Left-side image styling */
+  .address-image-container {
+    flex: 1;
+  }
+  
+  .address-image-container img {
+    width: 100%;
+    height: 79vh;
+    /* max-height: 250px; */
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Right-side form styling */
+  .address-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .address-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .address-form input:focus {
+    border-color: #10b981;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(16, 185, 129, 0.5);
+  }
+  
+  /* Checkbox */
+  .address-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .address-checkbox input {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Buttons */
+  .address-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .address-buttons button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .add-btn {
+    background: #10b981;
+    color: white;
+  }
+  
+  .add-btn:hover {
+    background: #0f9a7a;
+  }
+  
+  .cancel-btn {
+    background: #e5e7eb;
+    color: black;
+  }
+  
+  .cancel-btn:hover {
+    background: #d1d5db;
+  }
+
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .address-form-container {
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .address-image-container {
+      text-align: center;
+    }
+  
+    .address-image-container img {
+      max-width: 80%;
+    }
+  }
+  
+
+  .mapboxgl-marker {
+    transition: all 0.3s ease;
+  }
+  
+  .marker-active {
+    transform: scale(1.2);
+  }
+
+  .address-formContainer{
+    width: 100%;
+    /* background: #00000059; */
+    position: fixed;
+    z-index: 999;
+
+  }
+
+  .mapboxgl-canvas{
+    height: 700px !important;
+  }

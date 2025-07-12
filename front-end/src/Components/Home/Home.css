@@ -1,0 +1,154 @@
+
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+} */
+.natural-places-container {
+  position: relative;
+  height: 600px;
+  width: 40%;
+  float: right;
+}
+
+.center-hexagon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 230px;
+  height: 205px;
+  background-image: url("../../Assets/About.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.center-text {
+  font-family: "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+.image-point {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+}
+
+.image-circle {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arc {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-left-color: #03adfc;
+  transform: rotate(45deg);
+  z-index: 1;
+  left: -16px;
+  top: -17px;
+}
+
+/* Individual Point Positions */
+.point-1 { top: 15%; left: 49%; transform: translateX(8%); }
+.point-2 { top: 45%; right: 12%; transform: translateY(-25%); }
+.point-3 { bottom: 22%; right: 25%; transform: translateY(30%); }
+.point-4 { bottom: 15%; left: 59%; transform: translateX(-144%); }
+.point-5 { bottom: 25%; left: 12%; transform: translateY(-58%); }
+.point-6 { top: 16%; left: 25%; transform: translateY(-7%); }
+
+/* Rotating Arcs */
+.point-1 .arc { transform: rotate(225deg); }
+.point-2 .arc { transform: rotate(315deg); }
+.point-3 .arc { transform: rotate(45deg); }
+.point-4 .arc { transform: rotate(135deg); }
+.point-5 .arc { transform: rotate(225deg); }
+.point-6 .arc { transform: rotate(315deg); }
+
+/* Title Styles */
+.title {
+  position: absolute;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666666;
+  white-space: nowrap;
+  font-family: 'DM sans';
+}
+
+/* Individual Title Positions */
+.point-1 .title { margin-left: 125px; }
+.point-2 .title { margin-left: 125px; }
+.point-3 .title { margin-left: 150px; margin-top: 45px; }
+.point-4 .title { margin-left: -116px; margin-top: 45px; }
+.point-5 .title { margin-left: -117px; }
+.point-6 .title { margin-left: -78px; margin-top: 5px; }
+
+  
+  /* Optional: Adjust for a perfect circular arrangement */
+  @keyframes rotatePlaces {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .point-1 .arc,
+  .point-2 .arc,
+  .point-3 .arc,
+  .point-4 .arc,
+  .point-5 .arc,
+  .point-6 .arc {
+    animation: rotatePlaces 20s infinite linear;
+  }
+
+  #home-btn{
+    display: flex;
+    /* gap: 5px; */
+    width: 50%;
+    margin-top: 50px;
+    /* background-color: #e5ecd6; */
+  }
+  .p-tag{
+    font-family: 'DM sans';
+    color: #666666;
+  }
+
+  #Recycling-btn{
+    clip-path: polygon(0% 0%, 100% 0%, 98% 0%, 85% 100%, 100% 100%, 0% 100%, 0% 100%, 0% 0%);
+
+  }
+#Center-btn{
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 100% 100%, 10% 100%, 23% 0%, 0% 0%);
+
+}
