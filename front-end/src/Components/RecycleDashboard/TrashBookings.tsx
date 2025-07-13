@@ -49,18 +49,36 @@ const TrashBookings: React.FC = () => {
     refetch(); 
   }, [refetch]);
 
+  // const handlePermanentDelete = async () => {
+  //   if (!bookingToDelete) return;
+  //   try {
+  //     await deleteBooking(bookingToDelete).unwrap();
+  //     toast.success("Booking permanently deleted!");
+  //     setDeletePopupVisible(false); // Close the popup after successful delete
+  //     refetch();
+  //   } catch (error) {
+  //     const errorMessage = (error as Error).message || JSON.stringify(error);
+  //     toast.error(`Failed to delete booking: ${errorMessage}`);
+  //   }
+  // };
+
   const handlePermanentDelete = async () => {
-    if (!bookingToDelete) return;
-    try {
-      await deleteBooking(bookingToDelete).unwrap();
-      toast.success("Booking permanently deleted!");
-      setDeletePopupVisible(false); // Close the popup after successful delete
-      refetch();
-    } catch (error) {
-      const errorMessage = (error as Error).message || JSON.stringify(error);
-      toast.error(`Failed to delete booking: ${errorMessage}`);
-    }
-  };
+  if (!bookingToDelete || typeof bookingToDelete !== "string") {
+    toast.error("Invalid booking ID!");
+    return;
+  }
+
+  try {
+    await deleteBooking(bookingToDelete).unwrap();
+    toast.success("Booking permanently deleted!");
+    setDeletePopupVisible(false); // Close the popup after successful delete
+    refetch();
+  } catch (error) {
+    const errorMessage = (error as Error).message || JSON.stringify(error);
+    toast.error(`Failed to delete booking: ${errorMessage}`);
+  }
+};
+
 
   const handleRestore = async (id: string | undefined) => {
     if (!id) {
